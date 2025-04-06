@@ -1,0 +1,148 @@
+@import "theme.css";
+body,
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  background-color: #000;
+  @media (min-width: 667px) {
+    padding-inline: 13px;
+  }
+  display: grid;
+
+  /* grid-template-columns: 1fr;
+  @media (min-width: 667px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  } */
+
+  grid-template-columns: [content-start] minmax(280px, 1fr) [content-end];
+  @media (min-width: 667px) {
+    grid-template-columns: [content-start] 1fr 1fr [content-end];
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr [content-start] repeat(2, 371px) [content-end] 1fr;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr [content-start] repeat(3, 305px) [content-end] 1fr;
+  }
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr [content-start] repeat(4, 305px) [content-end] 1fr;
+  }
+
+  .header {
+    grid-column: 1/-1;
+    background-color: var(--pastel-rose);
+  }
+  .nav {
+    grid-column: 1/-1;
+    background-color: var(--pastel-peach);
+  }
+  .main {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--pastel-mint);
+  }
+  .footer {
+    grid-column: 1/-1;
+    background-color: var(--pastel-lilac);
+  }
+}
+.header-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  .logo {
+  }
+  input {
+  }
+  a:first-child {
+  }
+  a:last-child {
+  }
+}
+.nav-wrap {
+  ul {
+    li {
+      a:first-child {
+      }
+      a:last-child {
+      }
+    }
+  }
+}
+.main-wrap {
+  grid-column: content;
+  display: grid;
+  grid-template-columns: subgrid;
+  max-width: 768px;
+  @media (min-width: 1024px) {
+  }
+  .main-card {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: subgrid;
+    > * {
+      grid-column: span 1;
+    }
+  }
+  .main-ddakji {
+  }
+  .main-banner {
+  }
+}
+
+.component-card {
+  background-color: var(--pastel-sky-blue);
+  padding: 20px;
+  padding-top: 0;
+  @media (min-width: 667px) {
+    padding-inline: 7px;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 10px;
+  }
+  .card-thumbnail {
+    box-sizing: border-box;
+    min-width: 240px;
+    aspect-ratio: 16/9;
+    border: 1px solid red;
+  }
+  .card-footer-wrap {
+    box-sizing: border-box;
+    position: relative;
+    height: 48px;
+    padding: 10px 49px 0 0;
+    .card-title {
+      /* box-sizing: border-box; */
+      font-size: 16px;
+      line-height: 1.29;
+      /* border: 1px solid red; */
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+    .card-subtitle {
+      box-sizing: border-box;
+      font-size: 14px;
+      line-height: 1.29;
+      /* border: 1px solid red; */
+    }
+  }
+}
+
+.jjim-button {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  border-radius: 50%;
+  background: #d9d9d9;
+  width: 34px;
+  height: 34px;
+}

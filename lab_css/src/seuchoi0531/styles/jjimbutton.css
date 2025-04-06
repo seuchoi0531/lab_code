@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  appearance: none;
+}
+label {
+  width: 500px;
+  height: 500px;
+  background: 0;
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+input:checked + label {
+  > * {
+    animation: bounce 0.3s linear 0s 1;
+  }
+  svg {
+    circle {
+      fill: #fc615e;
+    }
+    path:nth-child(2) {
+      fill: #fed5d4;
+    }
+  }
+}
+
+@keyframes bounce {
+  25% {
+    scale: 0.7;
+  }
+  50% {
+    scale: 1.2;
+  }
+  75% {
+    scale: 0.85;
+  }
+}

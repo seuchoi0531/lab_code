@@ -1,0 +1,87 @@
+@import "../../styles/_base-style.css";
+@import "../../styles/a11y.css";
+* {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+h1.component-name {
+  text-align: center;
+}
+
+.news-link {
+  display: flex;
+  flex-flow: row nowrap;
+  [class^="news-link-"] {
+    color: yellow;
+  }
+  .news-link-headline {
+    flex-grow: 1;
+  }
+  .news-link-time {
+    font-size: 12px;
+  }
+}
+.news-headline-list {
+  background: blue;
+  padding: 15px;
+  .news-header {
+    .news-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+    }
+    .news-view-button {
+      background: 0;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+    rect,
+    path {
+      stroke: yellow;
+    }
+  }
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+section {
+  background: linear-gradient(to top left, blue, #d9d9d9);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  padding: 16px;
+  gap: 8px;
+  > h2 {
+    font-weight: bold;
+    font-size: 24px;
+    height: 40px;
+  }
+  > ul {
+    display: contents;
+    min-width: 0;
+    li {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-template-rows: subgrid;
+      grid-column: span 2;
+      a {
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        color: pink;
+      }
+      time:first-child {
+        text-align: right;
+      }
+      time:last-child {
+      }
+    }
+  }
+  > a {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+}

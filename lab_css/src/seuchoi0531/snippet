@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/public/icons/jrnaver.webp" />
+    <link
+      rel="preload"
+      as="font"
+      href="/public/fonts/woff2/NanumSquareRoundB.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/public/fonts/woff2/NanumSquareRoundEB.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/public/fonts/woff2/NanumSquareRoundR.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/public/fonts/woff2/NanumSquareRoundL.woff2"
+    />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.js"></script>
+    <title>쥬니어 네이버</title>
+  </head>
+  <body></body>
+</html>

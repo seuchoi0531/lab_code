@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab_seuchoi0531</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+    />
+    <link rel="stylesheet" href="./styles/seuchoi0531.css" />
+  </head>
+  <body>
+    <h1>animation-fill-mode test</h1>
+    <div class="container">
+      <div class="case case-01">
+        <aside class="sidebar">
+          <span>animation-fill-mode: none</span>
+          <div class="button-wrap">
+            <button type="button">시작</button>
+            <button type="button">초기화</button>
+          </div>
+        </aside>
+        <main class="main">
+          <div class="init">초기 위치</div>
+          <div class="start">시작 위치</div>
+          <div class="finish">도착 위치</div>
+          <div class="box box1"></div>
+        </main>
+      </div>
+      <div class="case case-02">
+        <aside class="sidebar">
+          <span>animation-fill-mode: forwards</span>
+          <div class="button-wrap">
+            <button type="button">시작</button>
+            <button type="button">초기화</button>
+          </div>
+        </aside>
+        <main class="main">
+          <div class="init">초기 위치</div>
+          <div class="start">시작 위치</div>
+          <div class="finish">도착 위치</div>
+          <div class="box box2"></div>
+        </main>
+      </div>
+      <div class="case case-03">
+        <aside class="sidebar">
+          <span>animation-fill-mode: backwards</span>
+          <div class="button-wrap">
+            <button type="button">시작</button>
+            <button type="button">초기화</button>
+          </div>
+        </aside>
+        <main class="main">
+          <div class="init">초기 위치</div>
+          <div class="start">시작 위치</div>
+          <div class="finish">도착 위치</div>
+          <div class="box box3"></div>
+        </main>
+      </div>
+      <div class="case case-04">
+        <aside class="sidebar">
+          <span>animation-fill-mode: both</span>
+          <div class="button-wrap">
+            <button type="button">시작</button>
+            <button type="button">초기화</button>
+          </div>
+        </aside>
+        <main class="main">
+          <div class="init">초기 위치</div>
+          <div class="start">시작 위치</div>
+          <div class="finish">도착 위치</div>
+          <div class="box box4"></div>
+        </main>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const fill_mode = ["none", "forwards", "backwards", "both"];
+        const arrbtn = document.getElementsByTagName("button");
+        const boxes = document.getElementsByClassName("box");
+        Array.from(arrbtn).forEach((e, i) => {
+          e.addEventListener("click", () => {
+            if (i % 2 == 0) {
+              if (
+                getComputedStyle(boxes[i / 2]).animationPlayState == "running"
+              ) {
+                boxes[i / 2].style.animationPlayState = "paused";
+                e.innerHTML = ">";
+              } else {
+                boxes[i / 2].style.animationPlayState = "running";
+                e.innerHTML = "| |";
+              }
+            } else {
+              boxes[(i - 1) / 2].style.animation = "none";
+              boxes[(i - 1) / 2].style.insetInlineStart = "30px";
+              boxes[(i - 1) / 2].style.backgroundColor = "red";
+              setTimeout(() => {
+                boxes[(i - 1) / 2].animation = "";
+                boxes[(i - 1) / 2].offsetHeigh;
+                boxes[
+                  (i - 1) / 2
+                ].style.animation = `fill-mode-animation 2s linear 1s 1 normal ${
+                  fill_mode[(i - 1) / 2]
+                }`;
+                boxes[(i - 1) / 2].style.animationPlayState = "paused";
+              }, 10);
+              arrbtn[i - 1].innerHTML = ">";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+:root {
+}
+
+.container {
+  block-size: 60vh;
+  display: grid;
+  row-gap: 0.5rem;
+  grid-template-columns: 250px auto;
+  /* display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: stretch; */
+}
+.sidebar {
+  height: 100%;
+  border-right: 1px solid black;
+}
+
+.case {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  /* display: flex;
+  flex-flow: row nowrap;
+  justify-content: start; */
+  border: 1px solid black;
+}
+
+.main {
+  position: relative;
+  > * {
+    inline-size: 50px;
+    block-size: 50px;
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+  }
+  .init {
+    background-color: red;
+    inset-inline-start: 30px;
+  }
+  .start {
+    background-color: yellow;
+    inset-inline-start: 120px;
+  }
+  .finish {
+    background-color: green;
+    inset-inline-start: 210px;
+  }
+  .box {
+    background-color: red;
+    border: 5px solid black;
+    box-sizing: border-box;
+    inset-inline-start: 30px;
+  }
+}
+@keyframes fill-mode-animation {
+  0% {
+    background-color: yellow;
+    inset-inline-start: 120px;
+  }
+  100% {
+    background-color: green;
+    inset-inline-start: 210px;
+  }
+}
+.box1 {
+  animation: fill-mode-animation 2s linear 1s 1 normal none;
+  animation-play-state: paused;
+}
+.box2 {
+  animation: fill-mode-animation 2s linear 1s 1 normal forwards;
+  animation-play-state: paused;
+}
+.box3 {
+  animation: fill-mode-animation 2s linear 1s 1 normal backwards;
+  animation-play-state: paused;
+}
+.box4 {
+  animation: fill-mode-animation 2s linear 1s 1 normal both;
+  animation-play-state: paused;
+}

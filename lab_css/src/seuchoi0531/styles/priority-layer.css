@@ -1,0 +1,40 @@
+@layer {
+  p.alert {
+    background: yellow;
+  }
+}
+
+@layer module, state, test;
+
+@layer state {
+  p.alert {
+    background: red;
+  }
+}
+
+@layer test {
+  p.alert {
+    background: blue;
+  }
+}
+
+@layer module {
+  p.alert {
+    background: orange;
+  }
+}
+
+/* @layer test, state; */
+@layer state, test;
+
+@layer test {
+  p.alert {
+    background: blue;
+  }
+}
+
+@layer state {
+  p.alert {
+    background: red;
+  }
+}

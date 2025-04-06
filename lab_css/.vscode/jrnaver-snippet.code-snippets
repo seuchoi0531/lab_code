@@ -1,0 +1,60 @@
+{
+  "jrnaverHTMLTemplate": {
+    "prefix": "jht",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"ko-KR\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\" />",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+      "    <link rel=\"icon\" href=\"/public/icons/jrnaver.webp\" />",
+      "    <link",
+      "      rel=\"preload\"",
+      "      as=\"font\"",
+      "      href=\"/public/fonts/woff2/NanumSquareRoundB.woff2\"",
+      "    />",
+      "    <link",
+      "      rel=\"preload\"",
+      "      as=\"font\"",
+      "      href=\"/public/fonts/woff2/NanumSquareRoundEB.woff2\"",
+      "    />",
+      "    <link",
+      "      rel=\"preload\"",
+      "      as=\"font\"",
+      "      href=\"/public/fonts/woff2/NanumSquareRoundR.woff2\"",
+      "    />",
+      "    <link",
+      "      rel=\"preload\"",
+      "      as=\"font\"",
+      "      href=\"/public/fonts/woff2/NanumSquareRoundL.woff2\"",
+      "    />",
+      "    <link",
+      "      href=\"https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css\"",
+      "      rel=\"stylesheet\"",
+      "    />",
+      "    <script type=\"module\" src=\"/src/main.js\"></script>",
+      "    <title>쥬니어 네이버</title>",
+      "  </head>",
+      "  <body>$1</body>",
+      "</html>",
+      ""
+    ],
+    "description": "jrnaverHTMLTemplate"
+  },
+  "jrnaverCSSTemplate": {
+    "prefix": "jct",
+    "body": ["@import 'tailwindcss';"],
+    "description": "jrnaverCSSTemplate"
+  },
+
+  "index.html에 만든거 추가": {
+    "prefix": "idxadd",
+    "body": ["<li><a href=\"/src/$1\">$2</a></li>"],
+    "description": "index.html에 만든거 추가"
+  },
+  "vite.config.js에 만든거 추가": {
+    "prefix": "viteadd",
+    "body": ["$1: 'src/$2',"],
+    "description": "vite.config.js에 만든거 추가"
+  }
+}

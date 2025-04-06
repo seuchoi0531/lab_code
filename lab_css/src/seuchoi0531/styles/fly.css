@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.top-link {
+  display: grid;
+  position: fixed;
+  bottom: 0%;
+  right: 5%;
+  scale: 0.25 0.25;
+  > * {
+    grid-area: 1/-1;
+  }
+  .remote-rocket {
+    z-index: 100;
+  }
+  .pongpong {
+    translate: 90px 220px;
+    z-index: 200;
+  }
+  .close-rocket {
+    z-index: 300;
+  }
+  .left-eye {
+    translate: 188px 363px;
+    z-index: 250;
+  }
+  .right-eye {
+    translate: 278px 363px;
+    z-index: 250;
+  }
+  .mouse {
+    translate: 195px 400px;
+    z-index: 250;
+  }
+  .stomach {
+    translate: 212px 483px;
+    z-index: 250;
+  }
+}
+
+@keyframes rocket {
+  50% {
+    translate: 0 60px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+.top-link {
+  animation: rocket 2s cubic-bezier(0.8, 0.4, 0.2, 0.6) 0s infinite backwards;
+}
+
+@keyframes blink {
+  60% {
+    scale: 1 1;
+  }
+  65% {
+    scale: 1 0;
+  }
+  70% {
+    scale: 1 1;
+  }
+  75% {
+    scale: 1 0;
+  }
+  80% {
+    scale: 1 1;
+  }
+  85% {
+    scale: 1 0;
+  }
+  90% {
+    scale: 1 1;
+  }
+}
+@keyframes left-position {
+  50% {
+    translate: 188px 363px;
+  }
+  60% {
+    translate: 188px 343px;
+  }
+  90% {
+    translate: 188px 343px;
+  }
+  100% {
+    translate: 188px 363px;
+  }
+}
+@keyframes right-position {
+  50% {
+    translate: 278px 363px;
+  }
+  60% {
+    translate: 278px 343px;
+  }
+  90% {
+    translate: 278px 343px;
+  }
+  100% {
+    translate: 278px 363px;
+  }
+}
+@keyframes talk {
+  7% {
+    scale: 1 1;
+  }
+  14% {
+    scale: 1 0;
+  }
+  21% {
+    scale: 1 1;
+  }
+  28% {
+    scale: 0.3 1;
+  }
+  35% {
+    scale: 1 1;
+  }
+  42% {
+    scale: 1 0;
+  }
+  49% {
+    scale: 1 1;
+  }
+}
+@keyframes mouse-position {
+  50% {
+    translate: 195px 400px;
+  }
+  60% {
+    translate: 195px 380px;
+  }
+  90% {
+    translate: 195px 380px;
+  }
+  100% {
+    translate: 195px 400px;
+  }
+}
+@keyframes stomach-position {
+  50% {
+    translate: 212px 483px;
+  }
+  60% {
+    translate: 212px 443px;
+  }
+  90% {
+    translate: 212px 443px;
+  }
+  100% {
+    translate: 212px 483px;
+  }
+}
+.left-eye {
+  animation: blink 1.5s cubic-bezier(0.8, 0.4, 0.2, 0.6) 0s infinite backwards,
+    left-position 1.5s cubic-bezier(0, 1, 1, 0) 0s infinite backwards;
+}
+.right-eye {
+  animation: blink 1.5s cubic-bezier(0.8, 0.4, 0.2, 0.6) 0s infinite backwards,
+    right-position 1.5s cubic-bezier(0, 1, 1, 0) 0s infinite backwards;
+}
+
+.mouse {
+  animation: talk 1.5s cubic-bezier(0.8, 0.4, 0.2, 0.6) 0s infinite backwards,
+    mouse-position 1.5s cubic-bezier(0, 1, 1, 0) 0s infinite backwards;
+}
+
+.stomach {
+  animation: stomach-position 1.5s cubic-bezier(0, 1, 1, 0) 0s infinite
+    backwards;
+}

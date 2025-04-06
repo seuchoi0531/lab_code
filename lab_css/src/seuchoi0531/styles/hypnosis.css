@@ -1,0 +1,193 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 내용이 넘쳐도 보이도록 설정 */
+  background-color: #000;
+}
+@keyframes scale-2000-1800 {
+  0% {
+    width: 2000px;
+    height: 2000px;
+  }
+  100% {
+    width: 1800px;
+    height: 1800px;
+  }
+}
+@keyframes scale-1800-1600 {
+  0% {
+    width: 1800px;
+    height: 1800px;
+  }
+  100% {
+    width: 1600px;
+    height: 1600px;
+  }
+}
+@keyframes scale-1600-1400 {
+  0% {
+    width: 1600px;
+    height: 1600px;
+  }
+  100% {
+    width: 1400px;
+    height: 1400px;
+  }
+}
+@keyframes scale-1400-1200 {
+  0% {
+    width: 1400px;
+    height: 1400px;
+  }
+  100% {
+    width: 1200px;
+    height: 1200px;
+  }
+}
+@keyframes scale-1200-1000 {
+  0% {
+    width: 1200px;
+    height: 1200px;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+  }
+}
+@keyframes scale-1000-800 {
+  0% {
+    width: 1000px;
+    height: 1000px;
+  }
+  100% {
+    width: 800px;
+    height: 800px;
+  }
+}
+@keyframes scale-800-600 {
+  0% {
+    width: 800px;
+    height: 800px;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+  }
+}
+@keyframes scale-600-400 {
+  0% {
+    width: 600px;
+    height: 600px;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+  }
+}
+@keyframes scale-400-200 {
+  0% {
+    width: 400px;
+    height: 400px;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+  }
+}
+@keyframes scale-200-0 {
+  0% {
+    width: 200px;
+    height: 200px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}
+@keyframes scale-100-0 {
+  0% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}
+div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #000;
+  border: 50px solid #fff;
+  /* box-sizing: border-box; */
+}
+
+body > div {
+  width: 2000px;
+  height: 2000px;
+  animation: scale-2000-1800 2s linear 0s infinite normal both;
+  > div {
+    width: 1800px;
+    height: 1800px;
+    animation: scale-1800-1600 2s linear 0s infinite normal both;
+    > div {
+      width: 1600px;
+      height: 1600px;
+      animation: scale-1600-1400 2s linear 0s infinite normal both;
+      > div {
+        width: 1400px;
+        height: 1400px;
+        animation: scale-1400-1200 2s linear 0s infinite normal both;
+        > div {
+          width: 1200px;
+          height: 1200px;
+          animation: scale-1200-1000 2s linear 0s infinite normal both;
+          > div {
+            width: 1000px;
+            height: 1000px;
+            animation: scale-1000-800 2s linear 0s infinite normal both;
+            > div {
+              width: 800px;
+              height: 800px;
+              animation: scale-800-600 2s linear 0s infinite normal both;
+              > div {
+                width: 600px;
+                height: 600px;
+                animation: scale-600-400 2s linear 0s infinite normal both;
+                > div {
+                  width: 400px;
+                  height: 400px;
+                  animation: scale-400-200 2s linear 0s infinite normal both;
+                  > div {
+                    width: 200px;
+                    height: 200px;
+                    animation: scale-200-0 2s linear 0s infinite normal both;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.last-ring {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-width: 0px;
+  animation: scale-100-0 2s linear 0s infinite normal both;
+}

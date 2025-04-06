@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="mobileupdate">
+        <div class="mobileupdate_cont">
+          <div class="header_box">
+            <h1 class="jr_logo">
+              <button class="jr_logo_link">
+                <span class="blind">쥬니어네이버</span>
+              </button>
+            </h1>
+          </div>
+          <div class="mobileupdate_inner">
+            <div class="mobileupdate_message">미지원 기기입니다</div>
+            <p class="mobileupdate_info">
+              해당 기기는 버전이 낮아 지원이 불가능합니다.<br />다른 PC나
+              모바일에서 이용해 주세요.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var BROWSER={BAND:"band",LINE:"line",NAVER:"naver",KAKAOTALK:"kakaotalk",KAKAOSTORY:"kakaostory",TWITTER:"twitter",FACEBOOK:"fb",SAMSUNGBROWSER:"samsungbrowser"},BROWSER_COMPATIBILITY={chrome:49,safari:11,firefox:70,ie:11,edge1
+      7,opera:63,whale:1,samsungbrowser:12},mobileInfo={isMobile:!1,isTablet:!1,isAndroid:!1,isIOS:!1,osVersion:0,storeUrl:"",appUrl:"",shortcutUrl:"",isNaver:!1,isSamsungBrowser:!1,isSupportAR:!1},isCheckedMobileInfo=!1,hasOnTouchEnd="ontouchend"in document;function checkNaver(o){return new RegExp(BROWSER.NAVER).test(o)&&hasOnTouchEnd}function checkSamsungBrowser(o){return new RegExp(BROWSER.SAMSUNGBROWSER).test(o)&&hasOnTouchEnd}function getAndroidInfo(o){var e=o.match(/android\s([0-9\.]*)/i),n=0;return e&&e.length>1&&(n=parseInt(e[1],10)),{isOS:/android/.test(o)&&hasOnTouchEnd,version:n}}function checkCompatibility(o,e){return!!BROWSER_COMPATIBILITY[o]&&e>=BROWSER_COMPATIBILITY[o]}function getIOSInfo(o){var e=0,n=!1;if(/ipad|iphone|ipod/.test(o)){var i=o.match(/os (\d+)_(\d+)_?(\d+)?/);i&&i.length>1&&(n=!0,e=parseInt(i[1],10))}else{"MacIntel"===navigator.platform&&navigator.maxTouchPoints>1&&(n=!0,e=13)}return{isOS:n&&!window.MSStream,version:e}}function getMobileInfo(){if(!isCheckedMobileInfo){isCheckedMobileInfo=!0;var o=navigator.userAgent.toLowerCase();mobileInfo.isTablet=window.innerWidth>=667;var e=getAndroidInfo(o);mobileInfo.isAndroid=e.isOS,mobileInfo.isAndroid&&(mobileInfo.osVersion=e.version);var n=getIOSInfo(o);mobileInfo.isIOS=n.isOS,mobileInfo.isIOS&&(mobileInfo.osVersion=n.version),mobileInfo.isNaver=checkNaver(o),mobileInfo.isSamsungBrowser=checkSamsungBrowser(o),mobileInfo.isMobile=mobileInfo.isAndroid||mobileInfo.isIOS||mobileInfo.isSamsungBrowser}return mobileInfo}
+    </script>
+    <script>
+      function startMobileUpdateGuide(e){
+        var o=document.querySelector("#app"),i=document.createElement("style");
+        i.textContent='body,p,h1,button{margin: 0;padding: 0;} .blind{overflow: hidden !important;position: absolute !important;width: 1px !important;height: 1px !important;margin: -1px !important;clip: rect(0 0 0 0) !important} button {-webkit-appearance: none;border: 0;background: none;outline: none;cursor: pointer;-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent; /* For some Androids */} .mobileupdate .mobileupdate_cont .header_box .jr_logo .jr_logo_link:before{background-image:url("/assets/img/mobile_guide/logo.png");}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg)}}.mobileupdate{position:relative;-webkit-box-flex:1;-ms-flex:1;flex:1;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;min-height:100vh;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.mobileupdate .mobileupdate_cont{padding:0 20px;width:100%;max-width:768px;margin:0 auto;background-color:#fff;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-flex:1;-moz-flex:1;box-sizing:border-box;-webkit-box-sizing:border-box}.mobileupdate .mobileupdate_cont .header_box .jr_logo .jr_logo_link{padding:16px 0}.mobileupdate .mobileupdate_cont .header_box .jr_logo .jr_logo_link:before{display:inline-block;background-size:cover;width:108px;height:18px;content:""}.mobileupdate .mobileupdate_cont .mobileupdate_inner{position:relative;padding-top:123px;margin:100px auto 150px;background:url("/assets/img/mobile_guide/empty.png") 50% 0 no-repeat;background-size:94px 110px;-webkit-background-size:94px 110px;text-align:center}.mobileupdate .mobileupdate_cont .mobileupdate_inner .mobileupdate_message{margin-top:2px;color:#333;font-size:18px;font-family:NanumSquareRound;font-weight:800;letter-spacing:-0.8px}.mobileupdate .mobileupdate_cont .mobileupdate_inner .mobileupdate_info{margin-top:6px;color:#8f8f8f;font-family:NanumSquareRound;font-size:13px;font-weight:400;line-height:20px;letter-spacing:-0.4px}.mobileupdate .mobileupdate_cont .mobileupdate_inner .mobileupdate_btn_box{margin-top:10px}.mobileupdate .mobileupdate_cont .mobileupdate_inner .mobileupdate_btn_box .mobileupdate_btn{display:inline-block;vertical-align:top;height:42px;padding:0 24px;background:#ffd037;color:#fff;font-family:NanumSquareRound;font-weight:800;font-size:15px;letter-spacing:-1px;border-radius:21px;-webkit-border-radius:21px}';
+        var t=e?'<div class="mobileupdate"> <div class="mobileupdate_cont"> <div class="header_box"> <h1 class="jr_logo"><button class="jr_logo_link"><span class="blind">쥬니어네이버</span></button></h1> </div> <div class="mobileupdate_inner"> <div class="mobileupdate_message">업데이트를 해주세요!</div> <p class="mobileupdate_info">사용하는
+      단말 OS 버전이 낮아 지원이 불가능합니다.<br/>단말 OS를 최신 버전으로 업데이트 후 이용 가능합니다.</p> </div> </div> </div>':'<div class="mobileupdate"> <div class="mobileupdate_cont"> <div class="header_box"> <h1 class="jr_logo"><button class="jr_logo_link"><span class="blind">쥬니어네이버</span></button></h1> </div> <div class="mobileupdate_inner"> <div class="mobileupdate_message">미지원 기기입니다</div> <p class="mobileupdate_info">해당 기기는 버전이 낮아 지원이 불
+      가능합니다.<br/>다른 PC나 모바일에서 이용해 주세요.</p> </div> </div> </div>';document.head.appendChild(i),o.innerHTML=t}window.startMobileUpdateGuide=startMobileUpdateGuide;var mInfo=getMobileInfo(),isMobile=mInfo.isMobile,isAndroid=I
+      nfo.isAndroid,isIOS=mInfo.isIOS,osVersion=mInfo.osVersion,isAvailableAndroid=isAndroid&&osVersion>=5,isAvailableIOS=isIOS&&osVersion>=11,isShowGuide=!1;function showGuide(e,o){isShowGuide=!0,window.startMobileUpdateGuide(o);try{sendNelo(e)}catch(e){console.log(e)}}if(isMobile)isAvailableAndroid||isAvailableIOS||mobileInfo.isSamsungBrowser||showGuide("Version Show.mobile.guide",!0);else{var ua=(navigator.userAgent||"").toLocaleLowerCase(),agentInfo=eg.agent(),bName=agentInfo.browser.name||"",bVersion=+agentInfo.browser.version.match(/[0-9]+(\.[0-9]+){0}/)[0]||0,isAvailablePc=checkCompatibility(bName,bVersion),osName=agentInfo.os.name,isChromium=(osVersion=agentInfo.os.majorVersion,agentInfo.browser.isChromium);if("unknown"===osName&&osVersion<0)isAvailablePc||showGuide("Version Show.pc.unsupported.unknown.os",!1);else if("tizen"===osName){if(osVersion<4){var isFH=ua.indexOf("familyhub")>-1;3===osVersion&&isFH||showGuide("Version Show.pc.unsupported.tizen",!1)}}else"android"===osName?osVersion<5&&showGuide("Version Show.pc.unsupported.android",!1):("webos"!==osName||isChromium||showGuide("Version Show.pc.unsupported.webos",!1),isAvailablePc||showGuide("Version Show.pc.unsupported",!1))}
+    </script>
+    <script>
+      var coreLoadedEvent = new CustomEvent("coreloaded"),
+        appStartedEvent = new CustomEvent("appstarted");
+      function dispatchCoreLoadedEvent() {
+        window.dispatchEvent(coreLoadedEvent);
+      }
+      function dispatchAppStartedEvent() {
+        window.dispatchEvent(appStartedEvent);
+      }
+      function handleCoreLoad() {
+        isShowGuide ||
+          (window.startApp
+            ? (window.startApp(), dispatchAppStartedEvent())
+            : showGuide("Script Show.unsupported", !1));
+      }
+      window.addEventListener("load", dispatchCoreLoadedEvent),
+        window.addEventListener("coreloaded", handleCoreLoad);
+    </script>
+    <script>
+      var rmcPlayer,
+        jr = jr || {};
+      jr.PluginMobile = {
+        drawVodPlayer: function (e, r, l, a, P, o, t, y, c) {
+          "false" == a &&
+            ((r = ""),
+            (e = ""),
+            alert(
+              "해당 영상 제공 제휴사의 요청으로 해당 국가에서는 동영상을 이용할 수 없습니다."
+            )),
+            (nhn.rmcnmv.BUILD_PHASE = "dev" == c ? "dev" : "real"),
+            ((rmcPlayer = new nhn.rmcnmv.RMCVideoPlayer(
+              e,
+              { value: r, outKeyMode: !1 },
+              0,
+              0,
+              2004,
+              null,
+              "http://serviceapi.rmcnmv.naver.com"
+            )).properties.coverImageURL = l),
+            (rmcPlayer.properties.isP2P = !1),
+            (rmcPlayer.properties.autoPlay = !0),
+            (rmcPlayer.properties.beginTime = y),
+            (rmcPlayer.properties.callbackHandler = "vodStatus"),
+            o &&
+              (rmcPlayer.setResolutionSetUsingNaverPlayer({
+                "270P": !1,
+                "450P": !1,
+                "480P": !1,
+                "720P": !1,
+              }),
+              t && rmcPlayer.setAllowResolutionArray(["270P", "480P"])),
+            rmcPlayer.setNotAllowPlay &&
+              ("false" == a &&
+                rmcPlayer.setNotAllowPlay(
+                  "해당 영상 제공 제휴사의 요청으로 해당 국가에서는 동영상을 이용할 수 없습니다."
+                ),
+              ("" != e && "" != r) ||
+                rmcPlayer.setNotAllowPlay(
+                  "요청하신 동영상을 재생할 수 없습니다."
+                )),
+            rmcPlayer.displayRMCPlayer("playerDiv");
+        },
+      };
+    </script>
+    <script src="/14.bundle.e86a4234ab79b18ecb90.js"></script>
+    <script src="/bundle.e86a4234ab79b18ecb90.js"></script>
+    <script
+      src="https://common.like.naver.com/js/reaction/dist/reaction.min.js?v=1451974"
+      async=""
+      charset="utf-8"
+    ></script>
+  </body>
+</html>
