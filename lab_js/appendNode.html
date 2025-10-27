@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 구조 파악하기</title>
+  </head>
+  <style>
+    .myintro {
+      background: #aa9449;
+    }
+  </style>
+  <body>
+    <div>
+      <button id="btn1">버튼 1</button>
+      <button id="btn2">버튼 2</button>
+      <button id="btn3">버튼 3</button>
+    </div>
+    <header>
+      <h1>페이지 제목</h1>
+      <nav>
+        <ul>
+          <li><a href="#">홈</a></li>
+          <li><a href="#">소개</a></li>
+          <li><a href="#">연락처</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="intro">
+        <h2>소개 섹션</h2>
+      </section>
+      <section id="content">
+        <h2>본문</h2>
+        <div class="card">
+          <h3>카드 제목</h3>
+          <p>카드 내용이 여기에 들어갑니다</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 페이지 카피라이터</p>
+    </footer>
+
+    <script>
+      const btn1 = document.querySelector("#btn1");
+      const btn2 = document.querySelector("#btn2");
+      const btn3 = document.querySelector("#btn3");
+      const menuItems = ["서비스", "포트폴리오", "블로그", "자주 묻는 질문", "이용약관", "후기", "멤버십", "이벤트", "뉴스", "고객지원"];
+
+      let colorFlag = true;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        btn1.addEventListener("click", function () {
+          const ul = document.querySelector("ul");
+          const liList = ul.getElementsByTagName("li");
+          const len = liList.length;
+          // ul.innerHTML += '<li><a href="#">메일</a></li>';
+          if (len - 3 < menuItems.length) ul.innerHTML += `<li id=nav-link-item${len - 3}><a href="#">${menuItems[len - 3]}</a></li>`;
+        });
+
+        btn2.addEventListener("click", function () {
+          const intro = document.querySelector("#intro");
+          const childP = document.createElement("P");
+          childP.classList.add("myintro");
+          // const textP = document.createTextNode("저는 김멋사입니다.");
+          childP.innerText = "저는 김멋사입니다.";
+
+          // childP.appendChild(textP);
+          intro.insertBefore(childP, intro.childNodes[2]);
+        });
+
+        btn3.addEventListener("mouseover", function () {
+          // const myintro1 = document.getElementsByClassName("myintro");
+          // while (myintro1.length > 0) {
+          //   myintro1[0].classList.remove("myintro");
+          // }
+          // const myintro2 = document.querySelectorAll(".myintro");
+          // for (let i = 0; i < myintro2.length; i++) {
+          //   myintro2[i].classList.remove("myintro");
+          // }
+          const intro = document.querySelector("#intro");
+          const introP = intro.getElementsByTagName("p");
+          for (let i = 0; i < introP.length; i++) introP[i].classList.add("myintro");
+          colorFlag = true;
+        });
+        btn3.addEventListener("mouseout", function () {
+          // const myintro1 = document.getElementsByClassName("myintro");
+          // while (myintro1.length > 0) {
+          //   myintro1[0].classList.remove("myintro");
+          // }
+          // const myintro2 = document.querySelectorAll(".myintro");
+          // for (let i = 0; i < myintro2.length; i++) {
+          //   myintro2[i].classList.remove("myintro");
+          // }
+          const intro = document.querySelector("#intro");
+          const introP = intro.getElementsByTagName("p");
+
+          for (let i = 0; i < introP.length; i++) introP[i].classList.remove("myintro");
+          colorFlag = false;
+        });
+
+        // btn2.addEventListener("click", insertIntro);
+
+        // function insertIntro() {
+        //   const intro = document.querySelector("#intro");
+        //   const childP = document.createElement("P");
+        //   // const textP = document.createTextNode("저는 김멋사입니다.");
+        //   childP.innerText = "저는 김멋사입니다.";
+
+        //   // childP.appendChild(textP);
+        //   intro.insertBefore(childP, intro.childNodes[2]);
+        // }
+      });
+    </script>
+  </body>
+</html>

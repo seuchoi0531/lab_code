@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="lib/easytimer/dist/easytimer.min.js"></script>
+    <script>
+      import { Timer } from "easytimer.js";
+      const timer = new Timer();
+      timer.start();
+
+      timer.addEventListener("secondsUpdated", function (e) {
+        $("#basicUsage").html(timer.getTimeValues().toString());
+      });
+    </script>
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 1fr;
+        width: 672px;
+        height: 400px;
+        background: #d9d9d9;
+        .stopwatch-label {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: 2;
+          &:hover {
+            background-color: #fff;
+          }
+          &:has(input:checked) {
+            background-color: red;
+          }
+          .stopwatch-radio {
+            appearance: none;
+          }
+        }
+        .timer-label {
+          grid-column-start: 2;
+          grid-column-end: 3;
+          grid-row-start: 1;
+          grid-row-end: 2;
+          &:hover {
+            background-color: #fff;
+          }
+          &:has(input:checked) {
+            background-color: red;
+          }
+          .timer-radio {
+            appearance: none;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock-container">
+      <label class="stopwatch-label"><input type="radio" name="clocktype" value="stopwatch" class="stopwatch-radio" />스톱워치</label>
+      <label class="timer-label"><input type="radio" name="clocktype" value="timer" class="timer-radio" />타이머</label>
+      <div class="clock-panel"><div id="basicUsage">00:00:00</div></div>
+    </div>
+  </body>
+</html>

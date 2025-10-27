@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .time-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        font-size: 24px;
+        user-select: none;
+      }
+
+      .time-unit {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        border: 2px solid #aaa;
+        border-radius: 10px;
+        cursor: ns-resize;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="numberBox" style="user-select: none; width: 100px; height: 40px; line-height: 40px; text-align: center; border: 1px solid #ccc; cursor: ns-resize">50</div>
+
+    <script>
+      const box = document.getElementById("numberBox");
+      let isDragging = false;
+      let startY = 0;
+      let value = 50;
+
+      box.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startY = e.clientY;
+        document.body.style.cursor = "ns-resize"; // 마우스 커서 변경
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          const diff = startY - e.clientY; // 위로 가면 양수, 아래로 가면 음수
+          const step = Math.round(diff / 5); // 민감도 조절 (5px마다 1 증가/감소)
+          box.textContent = value + step;
+        }
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (isDragging) {
+          value = parseInt(box.textContent, 10);
+          isDragging = false;
+          document.body.style.cursor = ""; // 원래 커서로 복원
+        }
+      });
+    </script> -->
+
+    <div class="time-container">
+      <div class="time-unit" data-type="hour">12</div>
+      <div class="time-unit" data-type="minute">30</div>
+      <div class="time-unit" data-type="second">45</div>
+    </div>
+
+    <script>
+      const units = document.querySelectorAll(".time-unit");
+
+      units.forEach((unit) => {
+        let isDragging = false;
+        let startY = 0;
+        let originalValue = 0;
+
+        unit.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          startY = e.clientY;
+          originalValue = parseInt(unit.textContent);
+          document.body.style.cursor = "ns-resize";
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+
+          const diff = startY - e.clientY;
+          const step = Math.floor(diff / 5); // 민감도
+
+          const type = unit.dataset.type;
+          let max = type === "hour" ? 23 : 59;
+          let value = (originalValue + step) % (max + 1);
+          if (value < 0) value += max + 1;
+
+          unit.textContent = value.toString().padStart(2, "0");
+        });
+
+        window.addEventListener("mouseup", () => {
+          if (isDragging) {
+            isDragging = false;
+            document.body.style.cursor = "";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

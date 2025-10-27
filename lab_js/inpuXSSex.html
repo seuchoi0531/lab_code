@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button></button>
+
+    <div id="result">
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const rst = document.getElementById("result");
+        rst.innerHTML = "<p>";
+        rst.innerHTML += `\n${확인눌러서들어올텍스트}`;
+        rst.innerHTML = "</p>";
+      });
+    </script>
+  </body>
+</html>

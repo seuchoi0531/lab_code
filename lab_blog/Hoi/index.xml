@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin>
+  <information>
+    <name>Hoi</name>
+    <version>0.1</version>
+    <description>
+      <![CDATA[ⓒ 2025. Hoi.]]>
+    </description>
+    <license>
+      <![CDATA[누구나 자유롭게 사용할 수 있습니다.]]>
+    </license>
+  </information>
+  <author>
+    <name>jkh2801</name>
+    <homepage>https://jkh2801.tistory.com</homepage>
+    <email>jkh2801@naver.com</email>
+  </author>
+  <variables>
+    <variablegroup name="글">
+      <variable>
+        <name>width</name>
+        <label>너비</label>
+        <description><![CDATA[ 너비 ]]></description>
+        <type>STRING</type>
+        <default>720</default>
+      </variable>
+    </variablegroup>
+      <variablegroup name="사이드 바">
+      <variable>
+        <name>sidebar_color</name>
+        <label>사이드 바 배경 색</label>
+        <description><![CDATA[ 사이드 바 배경 색 ]]></description>
+        <type>COLOR</type>
+        <default>#dadada</default>
+      </variable>
+    </variablegroup>
+  </variables>
+  <default>
+    <!-- 홈 설정 -->
+    <entriesOnPage>5</entriesOnPage>
+    <showListLock>1</showListLock>
+    <showListOnCategory>2</showListOnCategory>
+    <!-- 기본 설정 -->
+    <entriesOnList>5</entriesOnList>
+    <sortInCloud>1</sortInCloud>
+  </default>
+</skin>

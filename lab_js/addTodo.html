@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List App</title>
+  </head>
+  <body>
+    <div id="todo">
+      <header>
+        <h1>Todo List - 목록 조회 🙂</h1>
+      </header>
+      <div id="main">
+        <div id="container">
+          <ul>
+            <li>
+              <h2>쇼핑 목록</h2>
+              <div class="todoinput">
+                <input type="text" autofocus onkeyup="handleKeyup(event)" />
+                <button type="button" onclick="handleAdd()">추가</button>
+              </div>
+              <ul class="todolist">
+                <!-- <li data-no="1">
+                <span>1</span>
+                <span><s>샘플1</s></span>
+                <button type="button">삭제</button>
+              </li>
+              <li data-no="2">
+                <span>2</span>
+                <span>샘플2</span>
+                <button type="button">삭제</button>
+              </li>
+              <li data-no="3">
+                <span>3</span>
+                <span>샘플3</span>
+                <button type="button">삭제</button>
+              </li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <footer>
+        <p>멋쟁이 사자처럼 FrontEnd BootCamp</p>
+      </footer>
+    </div>
+
+    <script>
+      // 한건의 Todo 객체를 받아서 DOM 객체로 만들어 반환
+      function getTodoItemElem(item) {
+        // item -> { no: 3, title: '라면', done: true } // Todo 객체
+        /* DOM 객체
+      return <li>
+        <span>3</span>
+        <span>샘플3</span>
+        <button type="button">삭제</button>
+      </li>
+      */
+
+        // <li>
+        const liElem = document.createElement("li");
+        // <span>
+        const noElem = document.createElement("span");
+        // <span>
+        const titleElem = document.createElement("span");
+        // <button>
+        const deleteElem = document.createElement("button");
+
+        // 3
+        const noTxt = document.createTextNode(item.no);
+        // 샘플3
+        const titleTxt = document.createTextNode(item.title);
+        // 삭제
+        const deleteTxt = document.createTextNode("삭제");
+
+        // <span>3</span>
+        noElem.appendChild(noTxt);
+        // <span>샘플3</span>
+        titleElem.appendChild(titleTxt);
+        // <button type="button">삭제</button>
+        deleteElem.setAttribute("type", "button");
+        titleElem.setAttribute("tabindex", 0); // 완료/미완료 처리를 위한 탭 포커싱 ***** 접근성
+        deleteElem.appendChild(deleteTxt);
+
+        // <li><span>3</span></li>
+        liElem.appendChild(noElem);
+        // <li><span>3</span><span>샘플3</span></li>
+        liElem.appendChild(titleElem);
+        // <li><span>3</span><span>샘플3</span><button type="button">삭제</button></li>
+        liElem.appendChild(deleteElem);
+
+        // custom 속성
+        // <li data-no="3">
+        // elem.dataset.no -> 3
+        liElem.dataset.no = item.no;
+
+        // "삭제" 버튼에 클릭 이벤트 핸들러 추가
+        deleteElem.addEventListener("click", function (event) {
+          // no를 찾아서~~~ 첫번째 방법
+          // const btn = event.target; // 클릭 이벤트가 발생한 요소(<button>)
+          // // btn의 조상중 셀렉터와 일치하는 가장 가까운 조상
+          // const liNode = btn.closest('li'); // <li data-no="3">
+          // deleteItem(liNode.dataset.no);
+          // no를 찾아서~~~ 두번째 방법
+          // TODO 클로저 단원에서 이상한 부분 확인
+          // deleteItem(item.no);
+        });
+
+        // 삭제 이벤트 등록
+        deleteElem.setAttribute("onclick", `deleteItem(${item.no})`);
+
+        // 완료/미완료 처리
+        titleElem.setAttribute("onclick", `toggleDone(${item.no})`);
+
+        // <li>
+        //   <span>3</span>
+        //   <span>샘플3</span>
+        //   <button type="button">삭제</button>
+        // </li>
+        return liElem;
+      }
+
+      // "추가" 버튼 클릭 이벤트 핸들러
+      function handleAdd() {
+        const inputElem = document.querySelector(".todoinput > input");
+        if (inputElem.value.trim() !== "") {
+          addItem(inputElem.value.trim()); // <input>, <select> 같은 폼의 입력 요소에는 value 속성으로 사용자가 입력/선택한 값이 저장되어 있음
+          inputElem.value = "";
+          inputElem.focus();
+        }
+      }
+
+      // 엔터 키를 눌렀을때 처리할 이벤트 핸들러
+      function handleKeyup(event) {
+        // 키보드 이벤트 정보를 가지고 있는 Event 객체
+        if (event.key === "Enter") handleAdd();
+      }
+
+      // let itemNo = 3;
+
+      // 할일 추가
+      function addItem(title) {
+        const todoList = document.querySelector(".todolist");
+
+        const item = {
+          // children: 자식노드의 목록(요소노드)
+          no: todoList.children.length + 1,
+          // no: document.querySelectorAll('.todolist > li').length + 1,
+          // no: ++itemNo,
+          // title: title, // 속성값을 담는 변수가 속성명과 일치할 경우 속성값 생략 가능
+          title,
+          done: false, // 미완료 상태
+        };
+        const todoLi = getTodoItemElem(item);
+        console.dir(todoLi);
+
+        todoList.appendChild(todoLi);
+      }
+
+      // 완료/미완료 처리
+      function toggleDone(no) {
+        console.log(no);
+      }
+
+      // 할일 삭제
+      function deleteItem(no) {
+        const targetLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+        targetLi.remove();
+      }
+    </script>
+  </body>
+</html>

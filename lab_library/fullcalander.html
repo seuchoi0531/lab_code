@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    <script>
+      // import { Calendar } from "@fullcalendar/core";
+      // import interactionPlugin from "@fullcalendar/interaction"; // for selectable
+      // import dayGridPlugin from "@fullcalendar/daygrid"; // for dayGridMonth view
+      document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          // plugins: [interactionPlugin, dayGridPlugin],
+          initialView: "dayGridMonth",
+          // selectable: true,
+        });
+        calendar.render();
+      });
+    </script>
+    <style>
+      body {
+        /* background: black; */
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+      body > div:first-child {
+        /* color: white; */
+        width: 700px;
+        height: 700px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div><div id="calendar"></div></div>
+  </body>
+</html>

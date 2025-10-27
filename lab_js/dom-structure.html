@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 구조 파악하기</title>
+  </head>
+  <body>
+    <header>
+      <h1>페이지 제목</h1>
+      <nav>
+        <ul>
+          <li><a href="#">홈</a></li>
+          <li><a href="#">소개</a></li>
+          <li><a href="#">연락처</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="intro">
+        <h2>소개 섹션</h2>
+        <p>안녕하세요. 소개 섹션입니다.</p>
+      </section>
+      <section id="content">
+        <h2>본문</h2>
+        <div class="card">
+          <h3>카드 제목</h3>
+          <p>카드 내용이 여기에 들어갑니다</p>
+        </div>
+      </section>
+      <div id="mydiv"></div>
+    </main>
+    <footer>
+      <p>&copy; 페이지 카피라이터</p>
+    </footer>
+    <script>
+      const section1 = document.getElementById("intro");
+      const element1 = section1.firstElementChild.firstChild.nodeValue;
+      console.log(element1);
+
+      // const main = document.getElementsByTagName("main")[0];
+      // const element2 = main.lastElementChild.lastElementChild.firstElementChild.firstChild.nodeValue;
+      // console.log(element2);
+
+      const element3 = document.querySelector("header>nav>ul>li:last-child>a").textContent;
+      console.log(element3);
+
+      const call1 = document.querySelector("header>nav>ul>li:last-child").innerHTML;
+      const call2 = document.querySelector("header>nav>ul>li:last-child").innerText;
+      console.log("innerHTML", call1);
+      console.log("innerText", call2);
+
+      const mydiv = document.getElementById("mydiv");
+      let string = "";
+      for (let i = 1; i < 10; i++) {
+        string += `2 x ${i} = ${2 * i}\n`;
+      }
+      mydiv.innerText = string;
+    </script>
+  </body>
+</html>
